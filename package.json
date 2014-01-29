@@ -1,0 +1,22 @@
+{
+  "name": "handlebars-helpers",
+  "version": "0.0.1",
+  "private": "true",
+  "description": "gadventures.com handlebar helpers",
+  "main": "handlebars-helpers.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "dependencies": {
+      "underscore": "~1.5.2",
+      "moment": "~2.5.1",
+      "handlebars": "~1.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gadventures/handlebars-helpers.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
