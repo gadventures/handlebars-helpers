@@ -1,6 +1,11 @@
 /*global describe, it*/
 var assert = require('assert'),
-    helpers = require('../handlebars-helpers');
+    Handlebars = require('handlebars');
+
+// Update Handlebars with new helpers.
+Handlebars = require('../handlebars-helpers');
+
+var helpers = Handlebars.helpers;
 
 describe("Handlebars Helpers", function() {
     it("should export helpers", function() {

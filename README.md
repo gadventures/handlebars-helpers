@@ -12,10 +12,11 @@ Makes the following assumptions:
 Usage
 ===
 
-Add this project to your dependencies, and include it after Handlebar:
+Add this project to your dependencies, and bind your existing Handlebars
+instance to this modules result:
 
     var Handlebars = require('handlebars');
-    require('handlebars-helpers');
+    Handlebars = require('handlebars-helpers');
 
 At this point, all the helpers in this module will be registered into
 Handlebars, you can use them in your templates as you would any other Handlebars

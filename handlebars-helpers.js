@@ -128,7 +128,5 @@
         Handlebars.registerHelper(helper, localHelpers[helper]);
     }
 
-    console.log("Return new helpers", Handlebars.helpers);
-
     return Handlebars;
 }));
