@@ -27,16 +27,20 @@
         return string.replace(/^\s+|\s+$/g, '');
     };
 
-    var pluck = function(array, toPluck) {
-        toPluck = (toPluck || null);
-        return _.map(array, function(item) {
-            if (_.isObject(item) && toPluck !== null) {
-                return item[toPluck];
+    var pluck = function(item, field) {
+        if (!_.isObject(item)) return item;
+
+        var data = item;
+        field.split('.').map(function(part) {
+            if (typeof data[part] === "undefined") {
+                return;
             } else {
-                return item;
+                data = data[part];
             }
         });
+        return data;
     };
+
 
 
     var humanize = function(date, format) {
@@ -58,9 +62,11 @@
     // Default sepeator is ','
     //
     // Call with {{join <array> [field to pluck] [seperator]}}
-    var join = function(array, item, sep) {
+    var join = function(array, field, sep) {
         if (!_.isString(sep)) sep = ', ';
-        return pluck(array, item).join(sep);
+        return _.map(array, function(item) {
+            return pluck(item, field);
+        }).join(sep);
     };
 
 

@@ -27,6 +27,13 @@ describe("Handlebars Helpers", function() {
         ], 'foo'), 'First, Second');
     });
 
+    it("should pluck nested objects using dot notation", function() {
+        assert.equal(helpers.join([
+            {'name': {'first': 'Bob'}},
+            {'name': {'first': 'Joe'}}
+        ], 'name.first'), 'Bob, Joe');
+    });
+
     it("should pluralize if n > 1 array", function() {
         assert.equal(helpers.pluralize(['foo', 'bar'], 'item', 'items'), 'items');
         assert.equal(helpers.pluralize(['foo'], 'item', 'items'), 'item');
