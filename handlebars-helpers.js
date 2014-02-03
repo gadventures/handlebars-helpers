@@ -42,7 +42,6 @@
     };
 
 
-
     var humanize = function(date, format) {
         if (_.isString(format)) {
             format = (DATETIME_FORMATS[format]);
