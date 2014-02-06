@@ -1,13 +1,12 @@
 Handlebars Helpers
 ==================
 
-Various helpers used by gadventures.com for helping render Handlebar templates.
-
+Various helpers used by gadventures.com for helping render Handlebar templates. 
 
 Makes the following assumptions:
 
 * Django's gettext implementation is provided via its [Javascript Catalog](https://docs.djangoproject.com/en/dev/topics/i18n/translation/#internationalization-in-javascript-code)
-* You're using the dependencies listed in package.json (duh!)
+* For some helpers, you're using data structures presented by the G API.
 
 Usage
 ===

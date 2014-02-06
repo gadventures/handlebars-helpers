@@ -45,6 +45,27 @@
 
     // --- Actual Helpers
     
+    // Name helpers assuming the following GAPI name format: {
+    //  "legal_first_name": "Bob",
+    //  "legal_last_name": "Barker",
+    //  "legal_middle_name": null,
+    //  "common_name": "Price is Right Bob",
+    //  "title": "Mr"
+    // }
+    var legalName = function(name) {
+        return [
+            name.legal_first_name,
+            name.legal_middle_name ? name.legal_middle_name : '',
+            name.legal_last_name
+        ].join(' ');
+    };
+    var commonName = function(name) {
+        if (name.common_name) {
+            return name.common_name;
+        }
+        return name.legal_first_name;
+    };
+    
     // Given two dates, print out either a single date, or a range, using the
     // provide separator.
     var dateRange = function(date1, date2, separator) {
@@ -119,9 +140,11 @@
     };
 
     var localHelpers = {
+        commonName: commonName,
         dateRange: dateRange,
         humanize: humanize,
         join: join,
+        legalName: legalName,
         pluralize: pluralize,
         prettyDateRange: prettyDateRange,
         sentenceCase: sentenceCase,
