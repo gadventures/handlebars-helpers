@@ -18,6 +18,7 @@
     }
     HandlebarsException.prototype = Error.prototype;
 
+    // --- Conveniece Functions!
     var DATETIME_FORMATS = {
         datetime: 'MMMM Do YYYY, h:mm:ss a',
         date: 'MMMM Do YYYY'
@@ -42,6 +43,26 @@
     };
 
 
+    // --- Actual Helpers
+    
+    // Given two dates, print out either a single date, or a range, using the
+    // provide separator.
+    var dateRange = function(date1, date2, separator) {
+        separator = (separator || " to ");
+        var parts = [date1];
+        if (date1 != date2) parts.push(date2);
+        return parts.join(separator);
+    };
+
+    var prettyDateRange = function(date1, date2, separator, dateformat) {
+        // Do our best to identify the dateformat if it wasn't passed.
+        if (!_.isString(dateformat)) {
+            dateformat = date1.indexOf(':') > 0 ? 'datetime' : 'date';
+        }
+        return dateRange(humanize(date1, dateformat), humanize(date2, dateformat), separator);
+    };
+
+    // Given a date string, make it human readable.
     var humanize = function(date, format) {
         if (_.isString(format)) {
             format = (DATETIME_FORMATS[format]);
@@ -66,28 +87,6 @@
         return _.map(array, function(item) {
             return pluck(item, field);
         }).join(sep);
-    };
-
-
-    // Similiar to join except it produces a better sentence structure by using
-    // 'and' for the last element
-    // TODO: Deprecate this shitty function, the "and" can be implemented in a more
-    // generic way from the function call.
-    var sentenceJoin = function(array, item, sep) {
-        if (!_.isString(sep)) sep = ', ';
-
-        var string = [];
-        var items = pluck(array, item);
-
-        string.push(_(_.head(items, items.length - 1)).join(sep));
-
-        // lol oxford comma
-        if (items.length > 2) string.push(sep);
-        if (items.length > 1) string.push(' and ');
-
-        string.push(_.last(items));
-
-        return _(string).join('');
     };
 
     // The firstletter of the item should be uppercase.
@@ -120,12 +119,14 @@
     };
 
     var localHelpers = {
+        dateRange: dateRange,
         humanize: humanize,
         join: join,
         pluralize: pluralize,
+        prettyDateRange: prettyDateRange,
         sentenceCase: sentenceCase,
-        trans: trans,
         simpleTrans: simpleTrans,
+        trans: trans,
     };
 
     // Register all helpers.

@@ -38,4 +38,19 @@ describe("Handlebars Helpers", function() {
         assert.equal(helpers.pluralize(['foo', 'bar'], 'item', 'items'), 'items');
         assert.equal(helpers.pluralize(['foo'], 'item', 'items'), 'item');
     });
+
+    it("dateRange should return a date range only if dates don't match", function() {
+        assert.equal(helpers.dateRange("2014-02-07", "2014-02-17"), "2014-02-07 to 2014-02-17");
+        assert.equal(helpers.dateRange("2014-02-07", "2014-02-17", " - "), "2014-02-07 - 2014-02-17");
+        assert.equal(helpers.dateRange("2014-02-07", "2014-02-07"), "2014-02-07");
+    });
+
+    it("prettyDateRange should pretty print a date range", function() {
+        assert.equal(helpers.prettyDateRange("2014-02-07", "2014-02-17", " to ", "date"),
+            "February 7th 2014 to February 17th 2014");
+        assert.equal(helpers.prettyDateRange("2014-02-07", "2014-02-17", " to "),
+            "February 7th 2014 to February 17th 2014");
+        assert.equal(helpers.prettyDateRange("2014-02-07", "2014-02-17"),
+            "February 7th 2014 to February 17th 2014");
+    });
 });
