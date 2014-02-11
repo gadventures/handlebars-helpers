@@ -2,10 +2,10 @@
 (function(root, factory) {
   if (typeof exports !== 'undefined') {
       // Define as CommonJS export:
-      module.exports = factory(require("underscore"), require("moment"), require("Handlebars"));
+      module.exports = factory(require("underscore"), require("moment"), require("handlebars"));
   } else if (typeof define === 'function' && define.amd) {
       // Define as AMD:
-      define(["underscore", "moment", "Handlebars"], factory);
+      define(["underscore", "moment", "handlebars"], factory);
   } else {
       // Just run it:
       factory(root._, root.moment, root.Handlebars);
