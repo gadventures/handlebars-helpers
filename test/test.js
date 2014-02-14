@@ -53,4 +53,11 @@ describe("Handlebars Helpers", function() {
         assert.equal(helpers.prettyDateRange("2014-02-07", "2014-02-17"),
             "February 7th 2014 to February 17th 2014");
     });
+
+    it("should slugify strings", function() {
+        assert.equal(helpers.slugify("A String"), "a-string");
+        assert.equal(helpers.slugify(""), "");
+        assert.equal(helpers.slugify("funk !#@!#"), "funk-");
+        assert.equal(helpers.slugify("#@!*&^%#123"), "123");
+    });
 });

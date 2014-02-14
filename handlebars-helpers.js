@@ -44,7 +44,7 @@
 
 
     // --- Actual Helpers
-    
+    //
     // Name helpers assuming the following GAPI name format: {
     //  "legal_first_name": "Bob",
     //  "legal_last_name": "Barker",
@@ -65,7 +65,7 @@
         }
         return name.legal_first_name;
     };
-    
+
     // Given two dates, print out either a single date, or a range, using the
     // provide separator.
     var dateRange = function(date1, date2, separator) {
@@ -139,6 +139,13 @@
         return gettext(options.fn(this));
     };
 
+    var slugify = function(string) {
+        return string.toLowerCase()
+            .replace(/ /g, '-')
+            .replace(/[^\w-]+/g, '')
+            .trim();
+    };
+
     var localHelpers = {
         commonName: commonName,
         dateRange: dateRange,
@@ -150,6 +157,7 @@
         sentenceCase: sentenceCase,
         simpleTrans: simpleTrans,
         trans: trans,
+        slugify: slugify
     };
 
     // Register all helpers.
