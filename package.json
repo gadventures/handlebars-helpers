@@ -1,6 +1,6 @@
 {
   "name": "handlebars-helpers",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": "true",
   "description": "gadventures.com handlebar helpers",
   "main": "handlebars-helpers.js",
