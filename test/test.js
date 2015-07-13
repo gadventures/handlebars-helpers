@@ -60,4 +60,14 @@ describe("Handlebars Helpers", function() {
         assert.equal(helpers.slugify("funk !#@!#"), "funk-");
         assert.equal(helpers.slugify("#@!*&^%#123"), "123");
     });
+
+    it("should provide default string if variable is falsy", function() {
+        assert.equal(helpers.withDefault("A string", "default"), "A string");
+        assert.equal(helpers.withDefault("", "default"), "default");
+        assert.equal(helpers.withDefault(null, "default"), "default");
+
+        assert.equal(helpers.withDefault("A string"), "A string");
+        assert.equal(helpers.withDefault(""), "<em>(empty)</em>");
+        assert.equal(helpers.withDefault(null), "<em>(empty)</em>");
+    });
 });

@@ -98,7 +98,7 @@
         return moment(date).format(format);
     };
 
-    // Join an array of strings, with an optional `pluck` argument 
+    // Join an array of strings, with an optional `pluck` argument
     // if the passed array contains objects, rather than simple items.
     // Default sepeator is ','
     //
@@ -146,6 +146,21 @@
             .trim();
     };
 
+
+    /* If the given `string` variable is falsy, returns `defaultString`. Otherwise,
+    * use the `string` value. If `defaultString` is not given, it will defaults
+    * to "(empty)".
+    */
+    var withDefault = function (string, defaultString) {
+
+      if (!_.isString(defaultString)) {
+        defaultString = new Handlebars.SafeString('<em>(empty)</em>')
+      }
+
+      return string || defaultString
+    };
+
+
     var localHelpers = {
         commonName: commonName,
         dateRange: dateRange,
@@ -157,7 +172,8 @@
         sentenceCase: sentenceCase,
         simpleTrans: simpleTrans,
         trans: trans,
-        slugify: slugify
+        slugify: slugify,
+        withDefault: withDefault
     };
 
     // Register all helpers.
