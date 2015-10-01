@@ -161,6 +161,22 @@
     };
 
 
+    /* Replaces line breaks in plain text with appropriate HTML; a single
+     * newline becomes an HTML line break (<br />) and a new line followed by a
+     * blank line becomes a paragraph break (</p>).
+     *
+     * Similar to the `linebreaks` filter in Django templates.
+     */
+
+    var linebreaks = function(string) {
+        var paragraphs = string.split(/(?:\r?\n){2,}/).filter(Boolean);
+        var wrappedParagraphs = paragraphs.map(function (p) {
+            return '<p>' + p.replace(/\r?\n/, '<br />') + '</p>';
+        });
+        return new Handlebars.SafeString(wrappedParagraphs.join('\n\n'));
+    };
+
+
     var localHelpers = {
         commonName: commonName,
         dateRange: dateRange,
@@ -173,7 +189,8 @@
         simpleTrans: simpleTrans,
         trans: trans,
         slugify: slugify,
-        withDefault: withDefault
+        withDefault: withDefault,
+        linebreaks: linebreaks
     };
 
     // Register all helpers.

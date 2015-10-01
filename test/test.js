@@ -70,4 +70,24 @@ describe("Handlebars Helpers", function() {
         assert.equal(helpers.withDefault(""), "<em>(empty)</em>");
         assert.equal(helpers.withDefault(null), "<em>(empty)</em>");
     });
+
+    it("should wrap paragraphs in HTML 'p' tags, and replace single newlines with 'br' tags", function() {
+        assert.equal(helpers.linebreaks("A string"), "<p>A string</p>");
+        assert.equal(helpers.linebreaks("A\nstring"), "<p>A<br />string</p>");
+        assert.equal(helpers.linebreaks("A\n\nstring"), "<p>A</p>\n\n<p>string</p>");
+        assert.equal(helpers.linebreaks("A\n\n\nstring"), "<p>A</p>\n\n<p>string</p>");
+        assert.equal(helpers.linebreaks("A\n\nbig\nstring"), "<p>A</p>\n\n<p>big<br />string</p>");
+        assert.equal(helpers.linebreaks("A\n\nstring\n\n"), "<p>A</p>\n\n<p>string</p>");
+        assert.equal(helpers.linebreaks("A string\n"), "<p>A string<br /></p>");
+
+        assert.equal(helpers.linebreaks("A\r\nstring"), "<p>A<br />string</p>");
+        assert.equal(helpers.linebreaks("A\r\n\r\nstring"), "<p>A</p>\n\n<p>string</p>");
+        assert.equal(helpers.linebreaks("A\r\n\r\n\r\nstring"), "<p>A</p>\n\n<p>string</p>");
+        assert.equal(helpers.linebreaks("A\r\n\r\nbig\r\nstring"), "<p>A</p>\n\n<p>big<br />string</p>");
+        assert.equal(helpers.linebreaks("A\r\n\r\nstring\r\n\r\n"), "<p>A</p>\n\n<p>string</p>");
+        assert.equal(helpers.linebreaks("A string\r\n"), "<p>A string<br /></p>");
+
+        assert.equal(helpers.linebreaks("A\r\n\nstring"), "<p>A</p>\n\n<p>string</p>");
+        assert.equal(helpers.linebreaks("A\n\r\nstring"), "<p>A</p>\n\n<p>string</p>");
+    });
 });
