@@ -1,4 +1,4 @@
-/*global describe, it*/
+/* global describe, it, require */
 var assert = require('assert'),
     Handlebars = require('handlebars');
 
@@ -89,5 +89,9 @@ describe("Handlebars Helpers", function() {
 
         assert.equal(helpers.linebreaks("A\r\n\nstring"), "<p>A</p>\n\n<p>string</p>");
         assert.equal(helpers.linebreaks("A\n\r\nstring"), "<p>A</p>\n\n<p>string</p>");
+
+        assert.equal(helpers.linebreaks(""), "");
+        assert.equal(helpers.linebreaks(undefined), undefined);
+        assert.equal(helpers.linebreaks(null), null);
     });
 });

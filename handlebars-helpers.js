@@ -169,6 +169,9 @@
      */
 
     var linebreaks = function(string) {
+        if (typeof(string) !== "string") {
+          return string
+        }
         var paragraphs = string.split(/(?:\r?\n){2,}/).filter(Boolean);
         var wrappedParagraphs = paragraphs.map(function (p) {
             return '<p>' + p.replace(/\r?\n/, '<br />') + '</p>';
