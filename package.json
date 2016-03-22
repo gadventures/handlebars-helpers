@@ -1,6 +1,6 @@
 {
   "name": "handlebars-helpers",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": "true",
   "description": "gadventures.com handlebar helpers",
   "main": "handlebars-helpers.js",
@@ -8,15 +8,12 @@
     "test": "mocha test"
   },
   "dependencies": {
-      "underscore": "~1.5.2",
-      "moment": "~2.5.1",
-      "handlebars": "~3.0.3"
+      "underscore": "^1.8.3",
+      "moment": "^2.12.0",
+      "handlebars": "^4.0.5"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/gadventures/handlebars-helpers.git"
-  },
-  "author": "",
+  "repository": "gadventures/handlebars-helpers",
+  "author": "G Adventures",
   "license": "MIT",
   "readmeFilename": "README.md"
 }
