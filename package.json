@@ -1,14 +1,14 @@
 {
   "name": "handlebars-helpers",
-  "version": "0.2.3",
-  "private": "true",
+  "version": "0.2.4",
+  "private": true,
   "description": "gadventures.com handlebar helpers",
   "main": "handlebars-helpers.js",
   "scripts": {
     "test": "mocha test"
   },
   "dependencies": {
-      "underscore": "~1.5.2",
+      "underscore": "~1.6.0",
       "moment": "~2.5.1",
       "handlebars": "~3.0.3"
   },
