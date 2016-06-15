@@ -1,6 +1,6 @@
 {
   "name": "handlebars-helpers",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "private": true,
   "description": "gadventures.com handlebar helpers",
   "main": "handlebars-helpers.js",
@@ -8,9 +8,9 @@
     "test": "mocha test"
   },
   "dependencies": {
-      "underscore": "~1.6.0",
-      "moment": "~2.5.1",
-      "handlebars": "~3.0.3"
+    "handlebars": "^4.0.5",
+    "moment": "^2.12.0",
+    "underscore": "^1.8.3"
   },
   "repository": "gadventures/handlebars-helpers",
   "author": "G Adventures",
