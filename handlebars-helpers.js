@@ -179,6 +179,32 @@
         return new Handlebars.SafeString(wrappedParagraphs.join('\n\n'));
     };
 
+    var ifCond = function(v1, operator, v2, options) {
+        switch (operator) {
+            case '==':
+                return (v1 == v2) ? options.fn(this) : options.inverse(this);
+            case '===':
+                return (v1 === v2) ? options.fn(this) : options.inverse(this);
+            case '!=':
+                return (v1 != v2) ? options.fn(this) : options.inverse(this);
+            case '!==':
+                return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+            case '<':
+                return (v1 < v2) ? options.fn(this) : options.inverse(this);
+            case '<=':
+                return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+            case '>':
+                return (v1 > v2) ? options.fn(this) : options.inverse(this);
+            case '>=':
+                return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+            case '&&':
+                return (v1 && v2) ? options.fn(this) : options.inverse(this);
+            case '||':
+                return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            default:
+                return options.inverse(this);
+        }
+    }
 
     var localHelpers = {
         commonName: commonName,
@@ -193,7 +219,8 @@
         trans: trans,
         slugify: slugify,
         withDefault: withDefault,
-        linebreaks: linebreaks
+        linebreaks: linebreaks,
+        ifCond: ifCond
     };
 
     // Register all helpers.
